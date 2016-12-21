@@ -1,3 +1,5 @@
+# Copyright 2016 Declan Hoare
+#
 # This file is part of the RAD WINE Wrappers.
 #
 # The RAD WINE Wrappers are free software: you can redistribute them and/or modify

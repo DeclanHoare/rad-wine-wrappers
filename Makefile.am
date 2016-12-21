@@ -1,3 +1,5 @@
+# Copyright 2016 Declan Hoare
+#
 # This file is part of the RAD WINE Wrappers.
 #
 # The RAD WINE Wrappers are free software: you can redistribute them and/or modify
@@ -13,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with the RAD WINE Wrappers.  If not, see <http://www.gnu.org/licenses/>.
 
-noinst_SCRIPTS = generatewrapper generatewrappers extractfiles
+noinst_SCRIPTS = generatewrappers extractfiles
 filelist = brc32.exe brcc32.exe cgrc.exe convert.exe CppLibTransform.exe GenTLB.exe GetItCmd.exe grep.exe ico2icns.exe impdef.exe implib.exe make.exe mkexp.exe rc.exe reFind.exe rmtdbg240.exe tasm32.exe tdump.exe tlib.exe tlibimp.exe touch.exe tregsvr.exe WSDLImp.exe RcDLL.dll rw32core.dll
 radlist = convert grep make rc touch
 installerexe = radstudio10_1_upd2_esd.exe
@@ -29,15 +31,11 @@ radstudio: extractfiles Makefile
 	mv app/bin radstudio
 	rmdir app
 
-generatewrapper: src/generatewrapper.in Makefile
-	sed -e "s|RADLIST|$(radlist)|g" -e "s|DATAROOTDIR|$(datarootdir)|g" -e "s|WINEPATH|$(winePath)|g" < $(srcdir)/src/generatewrapper.in > generatewrapper
-	chmod +x generatewrapper
-
 generatewrappers: src/generatewrappers.in Makefile
-	sed -e "s|FILELIST|$(filelist)|g" -e "s|RADLIST|$(radlist)|g" < $(srcdir)/src/generatewrappers.in > generatewrappers
+	sed -e "s|FILELIST|$(filelist)|g" -e "s|RADLIST|$(radlist)|g" -e "s|DATAROOTDIR|$(datarootdir)|g" -e "s|WINEPATH|$(winePath)|g" < $(srcdir)/src/generatewrappers.in > generatewrappers
 	chmod +x generatewrappers
 
-wrappers: generatewrapper generatewrappers Makefile
+wrappers: generatewrappers Makefile
 	./generatewrappers
 
 install-exec-local: wrappers

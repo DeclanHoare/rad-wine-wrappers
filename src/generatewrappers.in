@@ -1,3 +1,5 @@
+# Copyright 2016 Declan Hoare
+#
 # This file is part of the RAD WINE Wrappers.
 #
 # The RAD WINE Wrappers are free software: you can redistribute them and/or modify
@@ -27,7 +29,9 @@ do
 				wrappername="rad$wrappername"
 			fi
 		done
-		./generatewrapper $exename > wrappers/$wrappername
+		cat > wrappers/$wrappername << EOF
+WINEDLLOVERRIDES="mscoree,mshtml=" WINEPATH DATAROOTDIR/radstudio/$exename \$@
+EOF
 		chmod +x wrappers/$wrappername
 	fi
 done
