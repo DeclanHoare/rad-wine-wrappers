@@ -21,6 +21,10 @@ Download it from:
 http://altd.embarcadero.com/download/radstudio/10.1/radstudio10_1_upd2_esd.exe
 and place either it or a symlink to it in the "src" directory.
 
+You will also need to run
+`autoreconf -i`
+to generate a configure script.
+
 Now you're ready to run the classic
 `./configure; make`
 as yourself and then
