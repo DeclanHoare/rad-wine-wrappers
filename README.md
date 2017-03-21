@@ -1,9 +1,9 @@
-#RAD WINE Wrappers
+# RAD WINE Wrappers
 
 The RAD WINE Wrappers are a set of automatically generated shell scripts
 which run RAD Studio's command line tools under WINE.
 
-##Why?
+## Why?
 
 RAD Studio is designed for cross-platform application development and as
 a result it can be rather useful for porting Windows software. However,
@@ -12,7 +12,7 @@ WINE, but using WINE to run tools is obnoxious to include in your build
 system. These scripts exist to make the tools included in RAD Studio
 look like regular native tools to your build system.
 
-##Building
+## Building
 
 The RAD Wine Wrappers are generated using autotools. However, you will
 need the original RAD Studio installer as a "source" file first.
